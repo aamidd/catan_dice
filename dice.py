@@ -4,22 +4,38 @@ import random
 def roll():
     return random.choice(range(6)) + 1
 
-player1 = input("enter first player's name: ")
-player2 = input("enter second player's name: ")
-print()
-print("randomizing the first player...")
+def query_number_of_players():
+    number_of_players = int(input("> enter the number of players: "))
+    while number_of_players > 6 or number_of_players < 1:
+        print("!!! number of players should be between 1-6 !!!")
+        number_of_players = int(input("> enter the number of players: "))
+    return number_of_players
 
-curr_player = random.choice([player1, player2])
-print(f"{curr_player} was chosen")
+
+
+
+n = query_number_of_players() # number of players
+players = []
+
+print("*** enter the names of the players in the same order as you're sitting ***")
+for i in range(n):
+    players += [input(f"player no.{i + 1}: ")]
+    
+print()
+# Choose a player randomly
+print("randomly choosing the first player...")
+curr_player = random.randrange(n)
+print(f"{players[curr_player]} was chosen")
+print("hit enter to roll the dice")
 
 try:
     while True:
         input()
-        d1 = roll()
-        d2 = roll()
-        print(curr_player.center(10, "*"))
-        print(f"{d1} and {d2}")
-        print(f"total: {d1 + d2}")
-        curr_player = player2 if curr_player == player1 else player1
+        d = [roll(), roll()] # dice
+
+        print(players[curr_player].center(10, "*"))
+        print(f"{d[0]} and {d[1]}")
+        print(f"total: {d[0] + d[1]}")
+        curr_player = (curr_player + 1) % n # add one to curr_player and roll back if it exceeds n
 except KeyboardInterrupt:
     print()
