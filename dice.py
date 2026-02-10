@@ -10,9 +10,6 @@ def query_number_of_players():
         number_of_players = int(input("> enter the number of players: "))
     return number_of_players
 
-
-
-
 n = query_number_of_players() # number of players
 players = []
 
