@@ -14,7 +14,7 @@ def query_number_of_players():
         raw_input = input("> enter the number of players: ")
         try:
             n = int(raw_input)
-        except:
+        except ValueError:
             print("!!! enter a number !!!")
             continue
         if 1 <= n <= 6:
