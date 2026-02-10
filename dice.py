@@ -4,11 +4,16 @@ def roll():
     return random.choice(range(6)) + 1
 
 def query_number_of_players():
-    number_of_players = int(input("> enter the number of players: "))
-    while number_of_players > 6 or number_of_players < 1:
+    while True:
+        raw_input = input("> enter the number of players: ")
+        try:
+            n = int(raw_input)
+        except:
+            print("!!! enter a number !!!")
+            continue
+        if 1 <= n <= 6:
+            return n
         print("!!! number of players should be between 1-6 !!!")
-        number_of_players = int(input("> enter the number of players: "))
-    return number_of_players
 
 n = query_number_of_players() # number of players
 players = []
