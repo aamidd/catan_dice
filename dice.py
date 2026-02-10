@@ -1,7 +1,7 @@
 import random
 
 def roll():
-    return random.choice(range(6)) + 1
+    return random.randint(1, 6)
 
 def query_number_of_players():
     while True:
