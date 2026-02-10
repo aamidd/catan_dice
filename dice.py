@@ -28,12 +28,11 @@ print("*** enter the names of the players in the same order as you're sitting **
 for i in range(n):
     players += [input(f"player no.{i + 1}: ")]
     
-print()
 # Choose a player randomly
-print("randomly choosing the first player...")
+print("\nrandomly choosing the first player...")
 curr_player = random.randrange(n)
 print(f"{players[curr_player]} was chosen")
-print("hit enter to roll the dice")
+print("\n*** hit enter to roll the dice or hit q and enter to quit ***")
 
 while True:
     cmd = input().strip().lower()
