@@ -34,6 +34,8 @@ curr_player = random.randrange(n)
 print(f"{players[curr_player]} was chosen")
 print("\n*** hit enter to roll the dice or hit q and enter to quit ***")
 
+max_width = max(len(p) for p in players) + 6
+
 while True:
     cmd = input().strip().lower()
     if cmd == "q":
@@ -42,7 +44,7 @@ while True:
 
     d1, d2, total = roll_two()
 
-    print(players[curr_player].center(10, "*"))
+    print(f" {players[curr_player]} ".center(max_width, "*"))
     print(f"{d1} and {d2}")
     print(f"total: {total}")
     curr_player = (curr_player + 1) % n # add one to curr_player and roll back if it exceeds n
