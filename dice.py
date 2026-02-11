@@ -17,9 +17,9 @@ def query_number_of_players():
         except ValueError:
             print("\n!!! enter a number !!!\n")
             continue
-        if 1 <= n <= 6:
+        if 2 <= n <= 6:
             return n
-        print("\n!!! number of players should be between 1-6 !!!\n")
+        print("\n!!! number of players should be between 2-6 !!!\n")
 
 def main():
     n = query_number_of_players() # number of players
