@@ -27,7 +27,7 @@ def main():
 
     print("\n*** enter the names of the players in the same order as you're sitting ***\n")
     for i in range(n):
-        players += [input(f"player no.{i + 1}: ")]
+        players += [input(f"player no.{i + 1}: ").strip() or f"Player{i + 1}"]
         
     # Choose a player randomly
     print("\nrandomly choosing the first player...")
