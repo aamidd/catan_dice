@@ -1,4 +1,5 @@
 import random
+from collections import Counter
 
 # rolls one die (random number between 1-6)
 def roll():
@@ -20,10 +21,16 @@ def query_number_of_players():
         if 2 <= n <= 6:
             return n
         print("\n!!! number of players should be between 2-6 !!!\n")
+        
+def print_counter_bars(counter):
+    for c in sorted(counter):
+        print(f"{c:02}: {"="*counter[c]}")
+
 
 def main():
     n = query_number_of_players() # number of players
     players = []
+    counter = Counter()
 
     print("\n*** enter the names of the players in the same order as you're sitting ***\n")
     for i in range(n):
@@ -44,11 +51,13 @@ def main():
             break
 
         d1, d2, total = roll_two()
+        counter[total] += 1
 
         print(f" {players[curr_player]} ".center(max_width, "*"))
         print(f"{d1} and {d2}")
         print(f"total: {total}")
         curr_player = (curr_player + 1) % n # add one to curr_player and roll back if it exceeds n
+    print_counter_bars(counter)
 
 if __name__ == "__main__":
     main()
