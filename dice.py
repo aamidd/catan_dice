@@ -44,11 +44,19 @@ def main():
 
     max_width = max(len(p) for p in players) + 6
 
+    running = True
     while True:
         cmd = input().strip().lower()
-        if cmd == "q":
+        if "bars" in cmd:
+            print("\n*** showing bars for dice rolled ***\n")
+            print_counter_bars(counter)
+            running = not running
+        if "q" in cmd:
             print("\n*** quitting ***\n")
             break
+        if not running:
+            running = True
+            continue
 
         d1, d2, total = roll_two()
         counter[total] += 1
@@ -57,7 +65,6 @@ def main():
         print(f"{d1} and {d2}")
         print(f"total: {total}")
         curr_player = (curr_player + 1) % n # add one to curr_player and roll back if it exceeds n
-    print_counter_bars(counter)
 
 if __name__ == "__main__":
     main()
