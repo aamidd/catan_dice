@@ -24,7 +24,7 @@ def query_number_of_players():
         
 def print_counter_bars(counter):
     for c in sorted(counter):
-        print(f"{c:02}: {"="*counter[c]}")
+        print(f"{c:02}: {'='*counter[c]}")
 
 
 def main():
